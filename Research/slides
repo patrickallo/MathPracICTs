@@ -1,0 +1,710 @@
+\documentclass{beamer}
+
+
+
+
+
+\usepackage{amsthm,amssymb,latexsym,amsmath,amsfonts,pstricks,color}
+
+%\usepackage[all]{xy}
+
+
+ \usetheme{Goettingen}
+
+
+\newcommand{\bibbox}[1]{{\scriptsize
+
+\begin{beamerboxesrounded}[shadow=true, lower=block body]{}
+
+#1
+
+\end{beamerboxesrounded}}}
+
+
+
+\definecolor{blueish}{rgb}{.99,.99,0.9}
+
+\definecolor{darkorange}{rgb}{1,.6,0.6}
+
+\definecolor{blue}{rgb}{0,0,1}
+
+\definecolor{orange}{rgb}{.95,0.96,0.5}
+
+
+
+
+
+\setbeamercolor{block body}{bg= blueish}
+% orange}
+
+\setbeamercolor{block head}{bg=blueish}
+
+
+
+
+
+\setbeamertemplate{background}
+
+
+
+
+
+
+% Title per Frame.
+
+\setbeamertemplate{frametitle}{
+
+    % Black colour for the title
+
+    \usebeamercolor[black]{frametitle}
+
+
+
+    % We will not place center the title
+
+%    \begin{center}
+
+     \insertframetitle
+
+%    \end{center}
+
+}
+
+
+
+
+
+% XXX BEGIN LAYOUT HACKS
+
+
+
+% Make sure the title doesn't overlap the background image
+
+\setbeamertemplate{headline}{
+
+    \vskip10pt
+
+}
+
+
+
+% Side bar hack
+
+
+
+% We don't have a side bar here on the background.
+
+% \setbeamersize{sidebar width right=2cm}
+
+
+
+% No navigation symbols...
+
+\setbeamertemplate{navigation symbols}{}
+
+
+
+% XXX END LAYOUT HACKS
+
+
+
+
+
+% Make a nice footline
+
+\newcommand{\K}{\ensuremath{\mathsf{K}}}
+\newcommand{\D}{\ensuremath{\mathsf{D}}}
+\newcommand{\So}{\ensuremath{\mathsf{S}}}
+\newcommand{\E}{\ensuremath{\mathsf{E}}}
+\newcommand{\C}{\ensuremath{\mathsf{C}}}
+\newcommand{\B}{\ensuremath{\mathsf{B}}}
+
+\begin{document}
+
+
+
+  \setbeamertemplate{background}{%
+   \parbox[c][\paperheight]{\paperwidth}{%
+        \vfill \hspace{24px}%\hfill
+ \includegraphics[width=0.7\paperwidth,height=0.9\paperheight]{logo.png}
+        \hfill \vfill}}
+
+
+\title{Mathematics in the Cloud}
+
+\subtitle{Mathematical Arguments and Distributed Knowledge}
+
+\author{ \textbf{P. Allo, J.P. Van Bendegem \& B. Van Kerkhove}}
+\date{
+
+% \vspace{5px}  
+{\small Centre for Logic and Philosophy of Science \\  \emph{Vrije Universiteit Brussel}  \\ \texttt{http://www.clwf.be} \\  
+\vspace{5px} 
+CLPS13, Ghent, 16 September 2013}}
+
+\maketitle
+
+\setbeamertemplate{background}
+
+
+
+            % 
+            % 
+            % \begin{frame}
+            % 
+            % \frametitle{Overview}
+            % 
+            % 
+            %  
+            %  \begin{enumerate}
+            % 
+            %  \item ``Economic'' model
+            % 
+            %  \item Based on abstract argumentation
+            %  
+            %   \item Logical models inspired by interactive and dynamic turn
+            %    
+            % \end{enumerate}
+            % 
+            %  \item First Case Study: Polymath
+            % 
+            %  \begin{enumerate}
+            % 
+            %  \item A bit of background
+            % 
+            %  \item Main features
+            %  
+            %   \item Initial insight based on structure of community
+            %   
+            %    \item Higher-order knowledge and group-knowledge
+            % 
+            %    \item How informational actions add structure% to graph-representation of scientific communities
+            %    
+            % \end{enumerate}
+            % 
+            %  \item Second Case Study: Hott
+            % 
+            %  \begin{enumerate}
+            % 
+            %  \item Background
+            % 
+            %  \item Comparison with Polymath
+            % 
+            %  \item Something about Git and Github
+            % 
+            %  \item Why star-form may not be optimal% (they're all professional mathematicians)
+            % 
+            %  \item Informational actions for collaborative writing
+            %  
+            % \end{enumerate}
+            %  
+            % %\item Conclusion
+            %  
+            % \end{enumerate}
+            % 
+            % \end{frame} 
+
+% \begin{frame}
+% 
+% \frametitle{Overview}
+% 
+% 
+%  
+%  \begin{enumerate}
+% 
+%  \item ``Economic'' model
+% 
+%  \item Based on abstract argumentation
+%  
+%   \item Logical models inspired by interactive and dynamic turn
+%    
+% \end{enumerate}
+% 
+%  \item First Case Study: Polymath
+% 
+%  \begin{enumerate}
+% 
+%  \item A bit of background
+% 
+%  \item Main features
+%  
+%   \item Initial insight based on structure of community
+%   
+%    \item Higher-order knowledge and group-knowledge
+% 
+%    \item How informational actions add structure% to graph-representation of scientific communities
+%    
+% \end{enumerate}
+% 
+%  \item Second Case Study: Hott
+% 
+%  \begin{enumerate}
+% 
+%  \item Background
+% 
+%  \item Comparison with Polymath
+% 
+%  \item Something about Git and Github
+% 
+%  \item Why star-form may not be optimal% (they're all professional mathematicians)
+% 
+%  \item Informational actions for collaborative writing
+%  
+% \end{enumerate}
+%  
+% %\item Conclusion
+%  
+% \end{enumerate}
+% 
+% \end{frame}
+
+
+
+
+\section{Introduction}
+
+
+\begin{frame}
+
+\frametitle{Introduction}
+
+\begin{itemize}
+    
+	\item \textsl{Background:} Philosophy of mathematical practice, with special attention to social and interactive aspects.
+
+	\item \textsl{Focus:} Collaboration between mathematicians, with special attention to massive collaboration where ICTs play a central role.
+	
+	\item \textsl{Goal:} Show that logical models that are inspired by the interactive and dynamic turn in logic can be used to classify different types of collaboration.
+	
+	\item \textsl{Approach:} General model, a case-study (and probably a second).
+	
+	\item \textsl{Paper:} ``Mathematical arguments and distributed knowledge'', in: A. Aberdein \& I. Dove (eds), The Argument of Mathematics, Springer, 2013: 339--60.
+\end{itemize}
+
+\end{frame}
+
+
+
+
+\section{Three models of epistemic communities}
+
+\begin{frame}
+
+\frametitle{Three models of epistemic communities}
+
+\begin{block}{``Economic'' model (signalling games, \emph{etc.})}
+\begin{itemize}
+ 
+	\item Most common formal representation of epistemic communities.
+ 	\item Communities are represented as graphs, with agents as nodes, and communication-channels as directed edges.
+	\item Communication is qualified in terms of \emph{cost}, \emph{payoff}, and \emph{reliability}.
+	\item \textsl{Main question:} What is the optimal organisation? {\scriptsize(e.g.\ directed circle, periphery sponsored star, centered sponsored star, \emph{etc.})}
+ 
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+
+
+\begin{frame}
+
+\frametitle{Three models of epistemic communities (II)}
+
+\begin{block}{Abstract argumentation}
+
+\begin{itemize}
+	\item Focus on arguments rather than agents.
+	\item Argumentation-networks are graphs with individual arguments as nodes, and attacks as directed edges.
+	\item \textsl{Main question:} What is the ``winning'' argument?
+	\item Basic system isn't very flexible, but \emph{meta-argumentation} can be used to model agents and other sources of information, and also closes the gap between abstract argumentation and Toulmin's argumentative model.
+\end{itemize}
+
+\end{block}
+\end{frame}
+
+\begin{frame}
+
+\frametitle{Three models of epistemic communities (III)}
+
+\begin{block}{Logical models}
+\begin{itemize}
+	\item Focus on
+		\begin{enumerate}
+			\item what individual agents know and believe,
+			\item how knowledge and belief is distributed, and
+			\item how this distribution can change over time.
+		\end{enumerate}
+	\item Higher-order knowledge (knowing what others know) is crucial.
+	\item Group-knowledge can be more or less distributed, and more or less transparent to the different members.
+	\item Logical distinctions between types of communication further refine the distinctions available in graph-based models.
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+
+\section{Case Study: The Polymath Project(s)}
+
+
+\begin{frame}
+
+\frametitle{Case Study: The Polymath Project(s)}
+\begin{quote}
+	I'm interested in the question of whether it is possible for lots of people to solve one single problem rather than lots of people solve one problem each. (Gowers 2009)
+\end{quote}
+\begin{block}{Background}
+\begin{itemize}
+	\item \textsl{Central figures:} Timothy Gowers, Michael Nielsen, and Terence Tao.
+    \item \textsl{Aim:} Massive collaboration in proof-search.
+	\item \textsl{First problem:} Elementary proof of the Density Hales-Jewett Theorem.
+	\item \textsl{Status:} 8 Polymath projects (2 solved), and 4 mini-polymaths (3 solved).
+\end{itemize}
+\end{block}
+\end{frame} 
+
+\begin{frame}
+	\frametitle{Polymath (II)}
+\begin{block}{Main Features}
+	\begin{itemize}
+		\item Specificity of combinatorial problems.
+		\item Lakatos visualised.
+		\item Contributions include analogies, reformulations of the problem, proofs of simpler related problems.
+		\item Different members play different roles.
+		\item Professional and amateur mathematicians.
+		%\item Room for ``crazy'' suggestions.
+	\end{itemize}
+\end{block}
+\begin{block}{Implementation}
+	\begin{itemize}
+		\item Collaboration on a blog.
+		\item Central figures can submit posts, other contributors can comment.
+		\item Posts of central figures can both express own ideas, and summarise input from comments.
+	\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+
+\frametitle{Polymath (III)}
+
+\begin{block}{Fact about star-models}
+  Both types of star-models are the only optimal models whenever there is a chance that information may degrade when repeatedly transmitted {\scriptsize(i.e.\ when the social ``distance'' matters)}.
+\end{block}
+
+\begin{block}{Conjecture about the Polymath organisation}
+	\begin{itemize}
+		\item \textsl{Assumption:} Distorted communication is more likely in heterogeneous communities.
+		\item Because comments are visible to all, Polymath does not function as a pure star-model.
+		\item Summaries of comments in posts mimic the communication in a (centered sponsored) star-model.
+		\item Because the Polymath community is very diverse, the star-model can be assumed to be optimal.
+		\item ``Styles of communication'' cannot be distinguished.
+	\end{itemize}
+\end{block}
+
+\end{frame}
+
+\section{Modelling shared and higher-order knowledge}
+
+\begin{frame}
+
+\frametitle{Basics of multi-agent epistemic knowledge}
+
+\begin{block}{Individual knowledge}
+\begin{itemize} 
+	\item Language to talk about what individual agents know.
+	\item Analysis of individual knowledge in terms of \emph{exclusion} of alternatives to the actual world.
+	\item Can be used to describe knowledge and ignorance of what is the case, \ldots
+\end{itemize}
+\end{block}
+\begin{block}{Higher-order and shared knowledge}
+\begin{itemize}
+	\item \ldots but also knowledge and ignorance of knowledge and ignorance of others.
+	\item Additional language to talk about different types of group-knowledge, which allows one to talk about how knowledge is distributed, and the knowledge and ignorance of that distribution.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Types of Group-Knowledge (I)}
+	\begin{block}{Distributed Knowledge}
+		\begin{itemize}
+			\item $\phi$ is $\D$-known in a group $\mathcal{G}$ iff:
+				\begin{itemize}
+					\item Every non-$\phi$ world is excluded by some member of $\mathcal{G}$.
+					\item $\phi$ can be deduced by combining the knowledge of all members of $\mathcal{G}$.
+				\end{itemize}
+			\item $\D$-knowledge is deductively closed and fully introspective (\textbf{S5}-knowledge).
+			\item What is merely $\D$-known is only implicitly known.
+		\end{itemize}
+	\end{block}
+	
+	\begin{block}{Individual Knowledge}
+		\begin{itemize}
+			\item $\phi$ is $\So$-known in $\mathcal{G}$ iff some member of $\mathcal{G}$ knows $\phi$.
+			\item $\So$-knowledge is not deductively closed.
+			\item What is merely $\So$-known is explicitly known because:
+				\begin{itemize}
+					\item It is not deductively closed.
+					\item It can be communicated by some agent.
+				\end{itemize}
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Types of Group-Knowledge (II)}
+	\begin{block}{General Knowledge}
+		\begin{itemize}
+			\item $\phi$ is $\E$-known in $\mathcal{G}$ iff all members of $\mathcal{G}$ know $\phi$.
+			\item $\E$-knowledge is deductively closed, but is not fully introspective.
+			\item What is $\E$-known is explicitly known because:
+				\begin{itemize}
+					\item It is also $\So$-known.
+					\item It can be communicated by all agents.
+				\end{itemize}
+		\end{itemize}
+	\end{block}
+	
+	\begin{block}{Common Knowledge}
+		\begin{itemize}
+			\item $\phi$ is $\E$-known in $\mathcal{G}$ iff:
+				\begin{itemize}
+					\item $\E^1 \phi \leftrightarrow \E \phi$ and
+					$\E^{k+1} \leftrightarrow \E\E^k \phi$.
+					\item $\phi$ is $\E^k$-known for all finite $k$
+				\end{itemize}
+			\item $\C$-knowledge is deductively closed and fully introspective (\textbf{S5}-knowledge).
+		\end{itemize}
+	\end{block}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Styles of communication}
+\begin{block}{Two facts about common knowledge}
+	\begin{itemize}
+		\item No agreement / coordinated action without common knowledge.
+		\item Common knowledge cannot be achieved through unreliable communication (no certainty of message being received).
+	\end{itemize}
+\end{block}
+
+\begin{block}{Public and private announcements}
+	\begin{itemize}
+		\item All and only public announcements give rise to common knowledge.
+		\item Private announcements are announcements where there is uncertainty about what is being announced.
+	\end{itemize}
+\end{block}
+\end{frame}
+
+
+\section{Modelling collaborative mathematics}
+
+\begin{frame}
+
+\frametitle{A few setups}
+
+\begin{block}{The inference network}
+	\begin{itemize}
+		\item Division of labour by distributing computational effort.
+		\item Making implicitly available knowledge explicit.
+		\item No need for public announcements.
+		\item Protocols often rely on presence of \emph{wise man}.
+	\end{itemize}
+\end{block}
+
+\begin{block}{Solving predefined subtasks}
+	\begin{itemize}
+		\item Solving big problem by splitting it up in subtasks, and assigning these to different subgroups.
+		\item Common knowledge can be restricted to subgroups and/or to certain bodies of knowledge.
+		\item Subgroups can treat other subgroups as individual agents, and thus ignore actual distribution of knowledge in other groups.
+	\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Coordination and diversity in Polymath (I)}
+\begin{block}{Core features}
+	\begin{itemize}
+		\item \textsl{Question:} What is the epistemic status of the ``publicly available'' information on the Polymath blog?
+		\item \textsl{First feature:} It is common knowledge that it is publicly available.
+		\item \textsl{Second feature:} Even if \emph{all} the publicly available information is generally known, this fact isn't common knowledge.
+		\item \textsl{Simplifying assumption:} Unlike the comments, the posts (i.e.\ contributions by central figures) can be treated as if they were common knowledge.
+	\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Coordination and diversity in Polymath (II)}
+
+\begin{block}{Some requirements}
+\begin{itemize}
+	\item Not every set of agents is a group we can talk about.
+	\item All agents can make announcements, but only some of them can make \emph{public announcements}.
+\end{itemize}
+\end{block}
+
+
+\begin{block}{Communication-styles in Polymath}
+\begin{itemize}
+	\item Private announcements play no role of significance.
+	\item \emph{General announcements} are the rule, and are crucial to the diversity of the community.
+	\item Public announcements are the prerogative of the central figures, and can be used to set and revise the agenda, and to promote or demote the input from the periphery.
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+
+\section{Case Study: HoTT}
+
+\begin{frame}
+\frametitle{Case Study: HoTT (I)}
+\begin{quote}
+	preliminary ideas, work under construction
+\end{quote}
+\begin{block}{Background}
+\begin{itemize}
+	\item \textsl{Central figures:} About two dozen mathematicians affiliated to IAS, among whom Peter Aczel, Andrei Bauer and Mike Shulman.
+    \item \textsl{Aim:} To write and freely share, in ``informal mathematical English'', a book on Homotopy Type Theory as an alternative foundation to set theory.
+	\item \textsl{Status:} Book has recently been finished (writing took six months only, discussion phase before that).
+\end{itemize}
+\end{block}
+\end{frame} 
+
+
+
+
+
+\begin{frame}
+\frametitle{HoTT (II)}
+
+\begin{block}{Main features}
+\begin{itemize}
+	\item Non-formal yet formalizable.
+   \item Different members on a par.
+   \item Professional mathematicians only.
+\end{itemize}
+\end{block}
+
+\begin{block}{Implementation}
+\begin{itemize}
+	\item Unix-based version control system Git.
+   \item Contains possibility of parallel histories.
+   \item Portions of text can be branched and merged.
+   \item Set up: stand alone, web application, GitHub.
+   \item Latter: combines Git with social network.
+   \item Functions as archive and planning device.
+\end{itemize}
+\end{block}
+
+
+\end{frame} 
+
+
+
+\begin{frame}
+\frametitle {HoTT (III)}
+
+\begin{block}{Some initial insights}
+\begin{itemize}
+	\item Mere distinctions between public, general and private announcements are not enough.
+	\item We need to model the functioning of Git, which includes \emph{branching} and \emph{merging} of branches.
+	\item Dynamic doxastic logics supplemented with a means to duplicate agents provide the basis for this.
+	\item Further requirements: a way to model agents \emph{and} the content they modify, a method for tracking history, \ldots
+\end{itemize}
+\end{block}
+\end{frame} 
+
+
+
+
+
+\section{Conclusion}
+
+\begin{frame}
+\frametitle{Conclusion}
+
+
+\begin{itemize}
+		\item \textsl{xxx:} xxx.
+   \item \textsl{xxx:} xxx.
+   \item \textsl{xxx:} xxx.
+\end{itemize}
+
+\end{frame} 
+
+
+
+\end{document}
+
+\subsection{4.1. Background}
+
+\begin{frame}
+
+\frametitle{4. Second Case Study: Hott}
+
+4.1. A bit of background
+
+\begin{itemize}
+ 
+ \item x
+ 
+\end{itemize}
+
+\end{frame}
+
+
+
+\subsection{4.2. Comparison}
+
+\begin{frame}
+
+\frametitle{4. Second Case Study: Hott}
+
+4.2. Comparison with Polymath
+
+\begin{itemize}
+ 
+ \item x
+ 
+\end{itemize}
+
+\end{frame}
+
+
+
+\subsection{4.3. Git / GitHub}
+
+\begin{frame}
+
+\frametitle{4. Second Case Study: Hott}
+
+4.3. Something about Git and Github 
+
+\begin{itemize}
+ 
+ \item x
+ 
+\end{itemize}
+
+\end{frame}
+
+
+
+\subsection{4.4. Rejoinder}
+
+\begin{frame}
+
+\frametitle{4. Second Case Study: Hott}
+
+4.4. Rejoinder based on why star-form may not be optimal (they're all professional mathematicians)
+
+\begin{itemize}
+ 
+ \item x
+ 
+\end{itemize}
+
+\end{frame}
+
