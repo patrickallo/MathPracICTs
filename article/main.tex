@@ -1,0 +1,138 @@
+%
+%  untitled
+%
+%  Created by Patrick Allo on 2013-11-18.
+%  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
+%
+\documentclass[a4paper,10pt,oneside]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+%\usepackage{fullpage}
+\usepackage{latexsym}
+\usepackage{amssymb}
+%\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{natbib, natbibspacing}
+\usepackage{pgf}
+\usepackage{prooftreenew}
+\usepackage{theorem}
+\usepackage{xxcolor} 
+\usepackage{modsect}
+\usepackage[sc]{caption}
+\usepackage{mdwlist}
+\usepackage[seriftt]{lucidabr}
+\DeclareEncodingSubset{TS1}{hlh}{1}
+\newcommand{\bibfont}{\small}
+\renewcommand{\thepage}{\oldstylenums{\arabic{page}}}
+\renewcommand{\thesection}{\oldstylenums{\arabic{section}}}
+\renewcommand*{\descriptionlabel}[1]{\hspace\labelsep\normalfont\scshape\bfseries #1}
+\renewcommand{\theequation}{\oldstylenums{\arabic{equation}}}
+\renewcommand{\theenumi}{\oldstylenums{\arabic{enumi}}}
+\renewcommand{\thefootnote}{\oldstylenums{\arabic{footnote}}}
+\renewcommand{\thefigure}{\oldstylenums{\arabic{figure}}} 
+%%
+\bibpunct[: ]{(}{)}{,}{a}{}{;}
+%%
+%%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{}
+\chead{\textsc{TITLE} } 
+\rhead{\thepage} 
+\lfoot{{\color{lightgray} {\footnotesize\texttt{Draft}}}}
+\cfoot{}
+\rfoot{{\color{lightgray} {\footnotesize\texttt{Version of \today}}}} 
+\renewcommand{\headrulewidth}{0pt} 
+\renewcommand{\footrulewidth}{0pt}
+
+%%
+%%
+\newcounter{parnum}[section]
+\newcommand{\N}{%
+  \noindent\refstepcounter{parnum}%
+  \makebox[\parindent][l]{\oldstylenums{\arabic{section}.\arabic{parnum}}}}
+\renewcommand{\theparnum}{\oldstylenums{\arabic{parnum}}}
+\setlength{\parindent}{2.25em}
+%%
+%%
+\setlength{\unitlength}{1cm}
+\linespread{1.125}
+\setlength{\parskip}{0.2cm plus 0.1cm minus 0.2cm}
+%\setlength{\bibspacing}{\baselineskip}
+%\renewcommand{\itemsep}{1pt}
+%%
+%%
+\newcommand{\nc}{\,\mid\!\sim\,}
+\newcommand{\ncx}{\,\mid\!\sim_x}
+\newcommand{\ncm}{\,\mid\!\sim_m}
+\newcommand{\ncr}{\,\mid\!\sim_r}
+\newcommand{\ncc}{\,\mid\!\sim_c}
+\newcommand{\ncn}{\,\mid\!\sim_n}
+\newcommand{\E}{\ensuremath{\mathsf{E}}}
+\newcommand{\U}{\ensuremath{\mathsf{U}}}
+\newcommand{\parbreak}{\begin{center}
+{\small\color{gray}$\blacklozenge~\blacklozenge~\blacklozenge$}
+\end{center}}
+\newcommand{\n}{\hspace{0.7cm}}
+%%
+%%
+\theoremheaderfont{\scshape}
+%\theoremstyle{break}
+\theorembodyfont{\rmfamily}
+\newtheorem{defn}{Definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{prop}{Proposition}
+\newtheorem{lem}{Lemma}[thm]
+\newtheorem{corp}{Corollary}[prop]
+\newtheorem{cort}{Corollary}[thm]
+\renewcommand{\thedefn}{\oldstylenums{\arabic{defn}}}
+\renewcommand{\thethm}{\oldstylenums{\arabic{thm}}}
+\renewcommand{\theprop}{\oldstylenums{\arabic{prop}}}
+\renewcommand{\thelem}{\oldstylenums{\arabic{thm}.\arabic{lem}}}
+\renewcommand{\thecorp}{\oldstylenums{\arabic{prop}.\arabic{corp}}}
+\renewcommand{\thecort}{\oldstylenums{\arabic{thm}.\arabic{cort}}}
+\def\qed{\relax
+     \ifmmode
+       ~\hfill\Box
+     \else
+        \unskip\nobreak ~\hfill$\square$%
+      \fi \par}
+
+\title	{{\scriptsize -- Draft --}\\
+		{\Large TITLE}}
+\author{  }
+
+\date{2013-11-18}
+
+\begin{document}
+
+
+\maketitle
+
+
+% \begin{abstract}
+% 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+% \end{abstract}
+
+%%
+%%
+\section{\protect\centering}\label{sect:intro}
+
+
+
+
+% \vspace{.5cm}
+% \noindent\textsc{Patrick Allo}\\
+% \textsc{Centre for Logic and Philosophy of Science}\\
+% \textsc{Vrije Universiteit Brussel}\\
+% \texttt{patrick.allo@vub.ac.be}
+
+
+
+
+%\bibliographystyle{agsm}
+%\bibliography{XXXX}
+
+
+\end{document}
